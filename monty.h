@@ -5,6 +5,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+/* GLOBAL VARIABLE */
+stack_t *globalStack;
+
 /* STRUCTURES */
 
 /**
@@ -37,5 +40,6 @@ typedef struct stack_s
 } stack_t;
 
 /* PROTOTYPES */
+void push(stack_t **stack, unsigned int line_number);
 
 #endif
