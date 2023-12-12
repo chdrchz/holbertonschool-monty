@@ -4,11 +4,11 @@
 /* HEADERS */
 #include <stdio.h>
 #include <stdlib.h>
-
-/* GLOBAL VARIABLE */
-stack_t *globalStack;
+#include <string.h>
 
 /* STRUCTURES */
+
+typedef struct stack_s stack_t;
 
 /**
  * struct instruction_s - opcode and its function
@@ -39,7 +39,11 @@ typedef struct stack_s
         struct stack_s *next;
 } stack_t;
 
+/* GLOBAL VARIABLE */
+stack_t *globalStack;
+
 /* PROTOTYPES */
+int is_numeric(const char *str);
 void push(stack_t **stack, unsigned int line_number);
 
 #endif
