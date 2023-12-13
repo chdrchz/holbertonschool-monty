@@ -2,11 +2,10 @@
 
 int main(int argc, char *argv[])
 {
-	char *line = NULL, *token = NULL;
+	char *line = NULL, *opcode;
 	size_t length = 0;
 	ssize_t read;
 	unsigned int lineNumber;
-	int i = 0;
 	stack_t *stack = NULL;
 	FILE *file = NULL;
 	if (argc != 2)

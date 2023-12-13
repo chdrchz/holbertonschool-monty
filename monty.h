@@ -44,6 +44,6 @@ stack_t *globalStack;
 
 /* PROTOTYPES */
 void push(stack_t **stack, unsigned int line_number);
-void execute_opcode(char *opcode, stack_t **stack, unsigned int line_number);
+void get_op(char *opcode, stack_t **stack, unsigned int line_number);
 
 #endif

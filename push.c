@@ -29,7 +29,9 @@ void push(stack_t **stack, unsigned int line_number)
 		exit(EXIT_FAILURE);
 	}
 	newNode->n = value;
-	newNode->prev = NULL:
+	newNode->prev = NULL;
 	newNode->next = *stack;
+	if (*stack != NULL)
+		(*stack)->prev = newNode;
 	*stack = newNode;
 }
