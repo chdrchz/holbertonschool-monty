@@ -1,18 +1,14 @@
 #include "monty.h"
 
-instruction_t instructions[] = {
-	{"push", push},
-	{NULL, NULL}
-};
-
 int main(int argc, char *argv[])
 {
-	char *line = NULL, *token = NULL, *tokens[20];
+	char *line = NULL, *token = NULL;
 	size_t length = 0;
-	unsigned int lineNumber = 0;
-	int i = 0, j = 0;
+	ssize_t read;
+	unsigned int lineNumber;
+	int i = 0;
+	stack_t *stack = NULL;
 	FILE *file = NULL;
-	globalStack = NULL;
 	if (argc != 2)
 	{
 		fprintf(stderr, "USAGE: monty file\n");
@@ -24,26 +20,19 @@ int main(int argc, char *argv[])
 		fprintf(stderr, "Error: Can't open file %s\n", argv[1]);
 		exit(EXIT_FAILURE);
 	}
-	while (getline(&line, &length, file) != -1)
+	read = getline(&line, &length, file);
+	while (read != -1)
 	{
-		lineNumber++;
-		i = 0;
-		token = strtok(line, " /n/t");
-		while (token != NULL)
+		opcode = strtok(line, " \t\n");
+		if (opcode == NULL)
 		{
-			tokens[i] = token;
-			i++;
-			token = strtok(NULL, " /n/t");
+			lineNumber = lineNumber + 1;
+			read = getline(&line, &length, file);
+			continue;
 		}
-		tokens[i] = NULL;
-		for (j = 0; instructions[j].opcode != NULL; j++)
-		{
-			if (strcmp(tokens[0], instructions[j].opcode) == 0)
-			{
-				instructions[j].f(&globalStack, lineNumber);
-				break;
-			}
-		}
+		get_op(opcode, &stack, lineNumber);
+		read = getline(&line, &length, file);
+		lineNumber = lineNumber + 1;
 	}
 	free(line);
 	fclose(file);

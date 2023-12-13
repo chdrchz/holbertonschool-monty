@@ -45,5 +45,6 @@ stack_t *globalStack;
 /* PROTOTYPES */
 int is_numeric(const char *str);
 void push(stack_t **stack, unsigned int line_number);
+void execute_opcode(char *opcode, stack_t **stack, unsigned int line_number);
 
 #endif
