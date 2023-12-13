@@ -6,8 +6,8 @@ void push(stack_t **stack, unsigned int line_number)
 	stack_t *newNode;
 	if (stack == NULL)
 	{
-		exit(EXIT_FAILURE);
 		fprintf(stderr, "L%u: usage: push integer\n", line_number);
+		exit(EXIT_FAILURE);
 	}
 	token = strtok(NULL, " \t\n");
 	if (token == NULL)
@@ -16,7 +16,7 @@ void push(stack_t **stack, unsigned int line_number)
 		exit(EXIT_FAILURE);
 	}
 	value = atoi(token);
-	if (strspn(token, "0123456789+-") != strlen(token))
+	if (strspn(token, "0123456789") != strlen(token) && (token[0] != '-' || strlen(token) == 1))
 	{
 		fprintf(stderr, "L%u: usage: push integer\n", line_number);
 		exit(EXIT_FAILURE);
