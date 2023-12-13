@@ -34,6 +34,19 @@ int main(int argc, char *argv[])
 		lineNumber = lineNumber + 1;
 	}
 	free(line);
+	free_stack(stack);
 	fclose(file);
 	return (EXIT_SUCCESS);
+}
+
+void free_stack(stack_t *stack)
+{
+	stack_t *nextNode;
+
+	while (stack != NULL)
+	{
+		nextNode = stack->next;
+		free(stack);
+		stack = nextNode;
+	}
 }
