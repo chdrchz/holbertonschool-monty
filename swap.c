@@ -2,7 +2,7 @@
 
 void swap(stack_t **stack, unsigned int line_number)
 {
-	stack_t topNode = NULL;
+	stack_t *topNode = *stack;
 	int temp;
 
 	if (topNode == NULL || topNode->next == NULL)
