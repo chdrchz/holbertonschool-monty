@@ -22,10 +22,10 @@ int main(int argc, char *argv[])
 	read = getline(&line, &length, file);
 	while (read != -1)
 	{
-		lineNumber = lineNumber + 1;
 		opcode = strtok(line, " \t\n");
 		if (opcode == NULL)
 		{
+			lineNumber = lineNumber + 1;
 			read = getline(&line, &length, file);
 			continue;
 		}
