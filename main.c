@@ -1,5 +1,13 @@
 #include "monty.h"
-
+/**
+ * main - open, read, and parse the monty file
+ *
+ * @argc: argument count
+ * @argv: argument list
+ *
+ * Return: On success: EXIT_SUCCESS
+ * On failure: EXIT_FAILURE
+ **/
 int main(int argc, char *argv[])
 {
 	char *line = NULL, *opcode;
@@ -8,6 +16,7 @@ int main(int argc, char *argv[])
 	unsigned int lineNumber = 1;
 	stack_t *stack = NULL;
 	FILE *file = NULL;
+
 	if (argc != 2)
 	{
 		fprintf(stderr, "USAGE: monty file\n");
@@ -38,7 +47,12 @@ int main(int argc, char *argv[])
 	fclose(file);
 	return (EXIT_SUCCESS);
 }
-
+/**
+ * free_stack - frees the stack memory
+ *
+ * @stack: top of stack
+ * return: nothing
+ **/
 void free_stack(stack_t *stack)
 {
 	stack_t *nextNode;
