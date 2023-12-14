@@ -5,7 +5,7 @@ int main(int argc, char *argv[])
 	char *line = NULL, *opcode;
 	size_t length = 0;
 	ssize_t read;
-	unsigned int lineNumber;
+	unsigned int lineNumber = 0;
 	stack_t *stack = NULL;
 	FILE *file = NULL;
 	if (argc != 2)
@@ -22,10 +22,10 @@ int main(int argc, char *argv[])
 	read = getline(&line, &length, file);
 	while (read != -1)
 	{
+		lineNumber = lineNumber + 1;
 		opcode = strtok(line, " \t\n");
 		if (opcode == NULL)
 		{
-			lineNumber = lineNumber + 1;
 			read = getline(&line, &length, file);
 			continue;
 		}
